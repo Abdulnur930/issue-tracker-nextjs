@@ -11,9 +11,9 @@ import {
   Flex,
   Container,
   Text,
-  DropdownMenu
+  DropdownMenu,
 } from "@radix-ui/themes";
-import {Skeleton} from "@/app/components";
+import { Skeleton } from "@/app/components";
 
 const NavBar = () => {
   return (
@@ -32,8 +32,6 @@ const NavBar = () => {
     </nav>
   );
 };
-
-
 
 const NavLinks = () => {
   const currentPath = usePathname();
@@ -84,6 +82,7 @@ const AuthStatus = () => {
             size="2"
             radius="full"
             className="cursor-pointer"
+            referrerPolicy="no-referrer"
           />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
