@@ -4,10 +4,23 @@ export const issueSchema = z.object({
   title: z.string().min(1, "Title is  required.").max(255),
   description: z
     .string({ required_error: "Description is required." })
-    .min(1, "Description is required."),
+    .min(1, "Description is required.").max(65535),
 });
 
-
+export const patchIssueSchema = z.object({
+  title: z.string().min(1, "Title is required.").max(255).optional(),
+  description: z
+    .string()
+    .min(1, "Description is required.")
+    .max(65535)
+    .optional(),
+  assignedToUserId: z
+    .string()
+    .min(1, "AssignedToUserId is required.")
+    .max(255)
+    .optional()
+    .nullable(),
+});
 
 // why the description say 'required'  instead of 'Description is required.'
 // The reason is that SimpleMDE returns an undefined instead of an empty string when you leave the description text field empty. So zod's z.string() schema returns an "invalid_type" error and shows the default error message "required".
